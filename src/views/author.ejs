@@ -1,0 +1,69 @@
+<% include partials/_header %>
+
+<div class="container">
+
+        <div class="row">
+          <!--FORM-->
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <form action="/author/add" method="post">
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="first_name" placeholder="Nombre">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="family_name" placeholder="Apellidos">
+                  </div>
+                  <div class="form-group">
+                    <label>Fecha Nacimiento</label>
+                    <input class="form-control" type="date" name="date_of_birth">
+                  </div>
+                  <div class="form-group">
+                    <label>Fecha de Defunción</label>
+                    <input class="form-control" type="date" name="date_of_death" placeholder="Apellidos">
+                  </div>
+                  <button class="btn btn-primary" type="submit">
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      
+          <!-- LIST -->
+          <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Fecha Nacimiento</th>
+                  <th>Fecha de Defunción</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i < authors.length; i++) { %>
+                    <tr>
+                       <td><%= authors[i].first_name +' '+authors[i].family_name %></td>
+                       <td><%= authors[i].date_of_birth %></td>
+                       <td><%= authors[i].date_of_death %></td>
+                       <td>
+                        <a href="/author/delete/<%= authors[i]._id %>"
+                            class="btn btn-danger">
+                            Delete
+                        </a>
+                        <a href="/author/edit/<%= authors[i]._id %>" class="btn btn-info">
+                            Edit
+                        </a>
+                        </td>
+                        
+                    </tr>
+                    <% } %>
+              </tbody>
+            </table>
+      
+          </div>
+        </div>
+      
+      </div>
+<% include partials/_footer %>

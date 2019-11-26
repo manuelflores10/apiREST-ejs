@@ -1,0 +1,35 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <!--FORM-->
+    <div class="col-md-5 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <form action="/author/edit/<%= author._id %>" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="first_name" placeholder="Nombre" value="<%= author.first_name %>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="family_name" placeholder="Apellidos" value="<%= author.family_name %>">
+            </div>
+            <div class="form-group">
+              <label>Fecha de Nacimiento</label>
+                <input class="form-control" type="date" name="date_of_birth"  value="<%= author.date_of_birth %>">
+            </div>
+            <div class="form-group">
+                <label>Fecha de Defunción</label>
+                  <input class="form-control" type="date" name="date_of_death"  value="<%= author.date_of_death %>">
+              </div>
+            
+            <button class="btn btn-primary" type="submit">
+              Update 
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer%>

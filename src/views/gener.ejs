@@ -1,0 +1,59 @@
+<% include partials/_header %>
+
+<div class="container">
+
+        <div class="row">
+          <!--FORM-->
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <form action="/gener/add" method="post">
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="Nombre">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="url" placeholder="url">
+                  </div>
+                  <button class="btn btn-primary" type="submit">
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      
+          <!-- LIST -->
+          <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>url</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i < geners.length; i++) { %>
+                    <tr>
+                       <td><%= geners[i].name %></td>
+                       <td><%= geners[i].url %></td>
+                       <td>
+                        <a href="/gener/delete/<%= geners[i]._id %>"
+                            class="btn btn-danger">
+                            Borrar
+                        </a>
+                        <a href="/gener/edit/<%= geners[i]._id %>" class="btn btn-info">
+                            Editar
+                        </a>
+                        </td>
+                        
+                    </tr>
+                    <% } %>
+              </tbody>
+            </table>
+      
+          </div>
+        </div>
+      
+      </div>
+<% include partials/_footer %>
